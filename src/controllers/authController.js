@@ -42,8 +42,8 @@ export const registerUser = async (
       token,
       {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge:
           7 * 24 * 60 * 60 * 1000,
       }
@@ -107,8 +107,8 @@ export const loginUser = async (
       token,
       {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge:
           7 * 24 * 60 * 60 * 1000,
       }
@@ -146,6 +146,8 @@ export const logoutUser = (
 ) => {
   res.cookie("token", "", {
     httpOnly: true,
+    secure: true,
+    sameSite: "none",
     expires: new Date(0),
   });
 
